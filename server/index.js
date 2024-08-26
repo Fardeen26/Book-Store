@@ -15,7 +15,7 @@ import { Student } from './models/Student.js';
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5174'],
+    origin: ['https://book-store-bz4gw1nhc-fardeen-mansooris-projects.vercel.app/'],
     credentials: true
 }));
 app.use(cookieParser());
