@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 const app = express();
-const path = require('path')
+// const path = require('path')
+import path from 'path'
 const port = process.env.PORT || 3001;
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
