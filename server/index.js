@@ -1,6 +1,8 @@
-import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import express from 'express';
+const app = express();
+const path = require('path')
 const port = process.env.PORT || 3001;
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -12,13 +14,17 @@ import { Admin } from './models/Admin.js';
 import { Book } from './models/Book.js';
 import { Student } from './models/Student.js';
 
-const app = express();
-app.use(express.json());
+const __dirname = path.resolve();
+
+
 app.use(cors({
     origin: ['http://localhost:5174'],
     credentials: true
 }));
+app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.json());
 app.use(cookieParser());
+
 app.use('/api/auth', AdminRouter);
 app.use('/api/student', studentRouter);
 app.use('/api/book', bookRouter);
