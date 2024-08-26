@@ -5,16 +5,16 @@ import axios from 'axios';
 const Logout = ({ setRoleG }) => {
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/logout')
-        .then(res => {
-            if(res.data.logout) {
-                setRoleG('');
-                navigate('/');
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        axios.get('/api/auth/logout')
+            .then(res => {
+                if (res.data.logout) {
+                    setRoleG('');
+                    navigate('/');
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }, [])
 }
 

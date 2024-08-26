@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { AdminRouter } from './routes/auth.js';
@@ -15,29 +15,25 @@ import { Student } from './models/Student.js';
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5174'],
     credentials: true
 }));
 app.use(cookieParser());
-app.use('/auth', AdminRouter);
-app.use('/student', studentRouter);
-app.use('/book', bookRouter);
+app.use('/api/auth', AdminRouter);
+app.use('/api/student', studentRouter);
+app.use('/api/book', bookRouter);
 
-app.get('/', (req, res) => {
-    res.send('server running');
-});
-
-app.get('/dashboard', async (req, res) => {
+app.get('/api/dashboard', async (req, res) => {
     try {
         const student = await Student.countDocuments();
         const admin = await Admin.countDocuments();
         const book = await Book.countDocuments();
-        return res.json({ok: true, student, admin, book});
+        return res.json({ ok: true, student, admin, book });
     } catch (error) {
         return res.json(err);
     }
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
 });

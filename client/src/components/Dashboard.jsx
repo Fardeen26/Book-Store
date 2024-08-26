@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Dashboard.css';
 
@@ -8,17 +8,17 @@ const Dashboard = () => {
   const [books, setBooks] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/dashboard')
-    .then(res => {
-      if(res.data.ok) {
-        setStudents(res.data.student);
-        setAdmin(res.data.admin);
-        setBooks(res.data.book);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    axios.get('/api/dashboard')
+      .then(res => {
+        if (res.data.ok) {
+          setStudents(res.data.student);
+          setAdmin(res.data.admin);
+          setBooks(res.data.book);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 
   return (

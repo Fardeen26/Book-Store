@@ -11,7 +11,7 @@ const Navbar = ({role}) => {
       </div>
       <div className="nav-right">
         <Link to='/books' className='nav-link'>Books</Link>
-        {
+        { 
             role === 'admin' && 
             <>
                 <Link to='/dashboard' className='nav-link'>Dashboard</Link>

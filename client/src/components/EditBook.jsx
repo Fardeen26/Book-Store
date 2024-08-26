@@ -12,7 +12,7 @@ const EditBook = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/book/book/${id}`)
+        axios.get(`/api/book/book/${id}`)
             .then(res => {
                 setName(res.data.name);
                 setAuthor(res.data.author);
@@ -25,7 +25,7 @@ const EditBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/book/book/${id}`, { name, author, imageUrl })
+        axios.put(`/api/book/book/${id}`, { name, author, imageUrl })
             .then(res => {
                 if (res.data.updated) {
                     navigate('/books');

@@ -13,9 +13,9 @@ const AddStudent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/student/register', { roll, username, password, grade })
+        axios.post('/api/student/register', { roll, username, password, grade })
             .then(res => {
-                if(res.data.registered) {
+                if (res.data.registered) {
                     navigate('/dashboard');
                 }
             })

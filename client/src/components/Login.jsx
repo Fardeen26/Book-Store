@@ -4,26 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import axios from 'axios';
 
-const Login = ({setRoleG}) => {
+const Login = ({ setRoleG }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('student'); 
+  const [role, setRole] = useState('student');
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
   const handleSubmit = () => {
-    axios.post('http://localhost:3001/auth/login', { username, password, role })
-    .then(res => { 
-      if(res.data.login && res.data.role == 'admin') {
-        setRoleG('admin');
-        navigate('/dashboard');
-      }
-      else if(res.data.login && res.data.role == 'student') {
-        setRoleG('student');
-        navigate('/');
-      }
-    })
-    .catch(err => console.log(err));
+    axios.post('/api/auth/login', { username, password, role })
+      .then(res => {
+        if (res.data.login && res.data.role == 'admin') {
+          setRoleG('admin');
+          navigate('/dashboard');
+        }
+        else if (res.data.login && res.data.role == 'student') {
+          setRoleG('student');
+          navigate('/');
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -32,11 +32,11 @@ const Login = ({setRoleG}) => {
         <h2>Login</h2> <br />
         <div className="form-group">
           <label htmlFor="username">Username: </label>
-          <input type="text" placeholder='Enter Username' onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder='Enter Username' onChange={(e) => setUsername(e.target.value)} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password: </label>
-          <input type="password" placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} />
         </div>
 
         <div className="form-group">

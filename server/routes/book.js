@@ -6,7 +6,7 @@ import { verifyAdmin } from './auth.js';
 router.post('/add', verifyAdmin, async (req, res) => {
     try {
         const { name, author, imageUrl } = req.body;
-        const newBook = new Book( {
+        const newBook = new Book({
             name,
             author,
             imageUrl
@@ -14,7 +14,7 @@ router.post('/add', verifyAdmin, async (req, res) => {
         await newBook.save();
         return res.json({ added: true });
     } catch (error) {
-        return res.json({ message: "There is an error in adding book!"});
+        return res.json({ message: "There is an error in adding book!" });
     }
 });
 
@@ -30,7 +30,7 @@ router.get('/books', async (req, res) => {
 router.get('/book/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const book = await Book.findById({_id: id})
+        const book = await Book.findById({ _id: id })
         return res.json(book);
     } catch (error) {
         return res.json(err);
@@ -40,8 +40,8 @@ router.get('/book/:id', async (req, res) => {
 router.put('/book/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const book = await Book.findByIdAndUpdate({_id: id}, req.body)
-        return res.json({updated: true, book});
+        const book = await Book.findByIdAndUpdate({ _id: id }, req.body)
+        return res.json({ updated: true, book });
     } catch (error) {
         return res.json(err);
     }
@@ -50,8 +50,8 @@ router.put('/book/:id', async (req, res) => {
 router.delete('/book/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const book = await Book.findByIdAndDelete({_id: id});
-        return res.json({deleted: true, book});
+        const book = await Book.findByIdAndDelete({ _id: id });
+        return res.json({ deleted: true, book });
     } catch (error) {
         return res.json(err);
     }

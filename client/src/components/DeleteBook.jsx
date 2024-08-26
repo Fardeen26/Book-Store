@@ -7,7 +7,7 @@ const DeleteBook = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.delete(`http://localhost:3001/book/book/${id}`)
+        axios.delete(`/api/book/book/${id}`)
             .then(res => {
                 if (res.data.deleted) {
                     navigate('/books');
