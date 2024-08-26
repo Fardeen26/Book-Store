@@ -12,7 +12,7 @@ const Login = ({ setRoleG }) => {
 
   axios.defaults.withCredentials = true;
   const handleSubmit = () => {
-    axios.post('/api/auth/login', { username, password, role })
+    axios.post('https://book-store-backend-z5yv.onrender.com/api/auth/login', { username, password, role })
       .then(res => {
         if (res.data.login && res.data.role == 'admin') {
           setRoleG('admin');

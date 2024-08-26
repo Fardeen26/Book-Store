@@ -12,7 +12,7 @@ const AddBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/api/book/add', { name, author, imageUrl })
+        axios.post('https://book-store-backend-z5yv.onrender.com/api/book/add', { name, author, imageUrl })
             .then(res => {
                 if (res.data.added) {
                     navigate('/books');

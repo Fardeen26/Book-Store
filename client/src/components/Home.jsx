@@ -5,7 +5,7 @@ import axios from 'axios'
 const Home = ({ setRoleG }) => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('/api/auth/verify')
+    axios.get('https://book-store-backend-z5yv.onrender.com/api/auth/verify')
       .then(res => {
         if (res.data.login) {
           setRoleG(res.data.role);
