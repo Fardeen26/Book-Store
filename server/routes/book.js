@@ -18,6 +18,14 @@ router.post('/add', verifyAdmin, async (req, res) => {
     }
 });
 
+router.get('/demobooks', (req, res) => {
+    return res.send({
+        id: 1,
+        name: "Do Epic Shit",
+        author: "Ankoor Wariko",
+    })
+})
+
 router.get('/books', async (req, res) => {
     try {
         const books = await Book.find();
