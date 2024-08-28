@@ -22,7 +22,7 @@ router.get('/demobooks', (req, res) => {
     return res.send({
         id: 1,
         name: "Do Epic Shit",
-        author: "Ankoor Wariko,
+        author: "Ankoor Wariko",
     })
 })
 
