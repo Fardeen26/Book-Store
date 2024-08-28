@@ -19,7 +19,7 @@ const __dirname = path.resolve();
 
 
 app.use(cors({
-    origin: ['https://book-store-bz4gw1nhc-fardeen-mansooris-projects.vercel.app/'],
+    origin: ['https://book-store-bz4gw1nhc-fardeen-mansooris-projects.vercel.app'],
     credentials: true
 }));
 app.use(express.static(path.join(__dirname, '/client/dist')));
