@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 
-const Navbar = ({role}) => {
+const Navbar = ({ role }) => {
   return (
     <nav className='navbar'>
       <div className="nav-left">
@@ -11,17 +11,18 @@ const Navbar = ({role}) => {
       </div>
       <div className="nav-right">
         <Link to='/books' className='nav-link'>Books</Link>
-        { 
-            role === 'admin' && 
-            <>
-                <Link to='/dashboard' className='nav-link'>Dashboard</Link>
-                <Link to='/addbook' className='nav-link'>Add Book</Link>
-                <Link to='/addstudent' className='nav-link'>Add Student</Link>
-            </>
+        <Link to='/demoroute' className='nav-link'>Demo Route</Link>
+        {
+          role === 'admin' &&
+          <>
+            <Link to='/dashboard' className='nav-link'>Dashboard</Link>
+            <Link to='/addbook' className='nav-link'>Add Book</Link>
+            <Link to='/addstudent' className='nav-link'>Add Student</Link>
+          </>
         }
         {
           role === "" ? <Link to='/login' className='nav-link'>Login</Link>
-          : <Link to='/logout' className='nav-link'>Logout</Link>
+            : <Link to='/logout' className='nav-link'>Logout</Link>
         }
       </div>
     </nav>
